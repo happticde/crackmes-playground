@@ -24,6 +24,7 @@ Welcome to your personal reverse engineering lab! This environment is designed t
 
 *   **`gdb`**: The GNU Debugger. Essential for dynamic analysis (running the program and inspecting its state).
 *   **`radare2`**: A powerful suite of tools for static and dynamic analysis. It has a steeper learning curve but is incredibly versatile.
+*   **`objdump`**: A powerful tool for static analysis, allowing you to inspect assembly code and other information from object files.
 *   **`hexedit`**: A simple command-line hex editor for patching binaries.
 *   **`gcc`, `nasm`, `build-essential`**: Compilers and tools to write and build your own C and assembly programs.
 *   **`wget`, `curl`**: For downloading more crackmes from the web.
