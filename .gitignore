@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.coverage
+.coverage.*
+.pytest_cache/
+
+# OS-specific
+.DS_Store
+
+# Downloaded Crackmes
+crackmes/*
+
+# Docker
+# Add any Docker-specific files that should be ignored, e.g.,
+# .dockerignore (if it's not meant to be committed, but usually it is)
+# *.log (if Docker logs are generated and not meant to be committed)

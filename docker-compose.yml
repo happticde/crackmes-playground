@@ -1,0 +1,12 @@
+services:
+  crackme-dev:
+    build: .
+    platform: linux/amd64
+    container_name: crackme-dev
+    tty: true
+    stdin_open: true
+    # This mounts the local 'crackmes' directory into the container
+    # so you can access and modify files from your host machine.
+    volumes:
+      - ./crackmes:/home/user/crackmes
+      - ./crawler:/home/user/crawler
