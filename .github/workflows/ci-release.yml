@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,16 +31,17 @@ jobs:
           pip install -r crawler/requirements.txt
           pip install -r crawler/requirements-dev.txt
 
-      - name: Lint with flake8
+      - name: Lint with ruff
         run: |
-          # stop the build if there are Python syntax errors or undefined names
-          flake8 crawler --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          flake8 crawler --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          ruff check crawler/
+          ruff format crawler/ --check
 
-      - name: Test with pytest
+      - name: Test with pytest and generate coverage report
         run: |
-          pytest crawler/
+          pytest --cov=./crawler --cov-report=xml crawler/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
 
   release:
     needs: build
@@ -47,22 +53,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
+      - name: Run go-semantic-release
+        uses: go-semantic-release/action@v1
         with:
-          go-version: '1.19'
-
-      - name: Install semantic-release
-        run: |
-          go install github.com/go-semantic-release/semantic-release@latest
-          go install github.com/go-semantic-release/provider-github@latest
-          go install github.com/go-semantic-release/changelog-generator-default@latest
-          go install github.com/go-semantic-release/condition-default@latest
-          go install github.com/go-semantic-release/files-updater-npm@latest
-
-      - name: Run semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          export PATH=$PATH:$(go env GOPATH)/bin
-          semantic-release
+          github-token: ${{ secrets.GITHUB_TOKEN }}

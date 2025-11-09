@@ -1,5 +1,3 @@
-import os
-
 file_path = "/Users/jankahnt/Documents/ai/crackmes-dev-environment/crawler/tests/html_samples/sample_provided.html"
 try:
     with open(file_path, "r", encoding="utf-8") as f:
