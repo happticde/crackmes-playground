@@ -38,10 +38,18 @@ jobs:
 
       - name: Test with pytest and generate coverage report
         run: |
-          pytest --cov=./crawler --cov-report=xml crawler/
+          pytest --cov=./crawler crawler/
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Generate coverage badge
+        run: |
+          coverage-badge -o coverage.svg
+
+      - name: Commit coverage badge
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "docs: update coverage badge"
+          file_pattern: coverage.svg
 
   release:
     needs: build

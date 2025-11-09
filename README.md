@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml/badge.svg)](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml)
-[![Latest Release](https://img.shields.io/github/v/release/happticde/crackmes-playground)](https://github.com/happticde/crackmes-playground/releases)
-[![codecov](https://codecov.io/gh/happticde/crackmes-playground/branch/main/graph/badge.svg)](https://codecov.io/gh/happticde/crackmes-playground)
+[![Latest Tag](https://img.shields.io/github/v/tag/happticde/crackmes-playground)](https://github.com/happticde/crackmes-playground/tags)
+![Coverage](coverage.svg)
 
 # Crackmes Development Environment
 
