@@ -16,14 +16,17 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
@@ -36,17 +39,18 @@ jobs:
           ruff check crawler/
           ruff format crawler/ --check
 
-      - name: Test with pytest and generate coverage report
+      - name: Test with pytest
         run: |
           pytest --cov=./crawler crawler/
 
       - name: Generate coverage badge
+        if: matrix.python-version == '3.13'
         run: |
           coverage-badge -o coverage.svg
 
       - name: Commit coverage badge
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: stefanzweifel/git-auto-commit-action@v4
+        if: matrix.python-version == '3.13' && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update coverage badge"
           file_pattern: coverage.svg
@@ -57,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
