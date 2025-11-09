@@ -1,3 +1,6 @@
+[![Build Status](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml/badge.svg)](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml)
+[![Latest Release](https://img.shields.io/github/v/release/happticde/crackmes-playground)](https://github.com/happticde/crackmes-playground/releases)
+
 # Crackmes Development Environment
 
 Welcome to your personal reverse engineering lab! This environment is designed to give you a secure, isolated space to practice your skills on "crackmes" without any risk to your host machine.

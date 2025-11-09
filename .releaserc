@@ -1,0 +1,11 @@
+{
+  "provider": "github",
+  "changelog": "default",
+  "condition": "default",
+  "files": [
+    {
+      "path": "VERSION",
+      "updater": "raw"
+    }
+  ]
+}
