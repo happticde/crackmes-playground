@@ -36,9 +36,12 @@ jobs:
           ruff check crawler/
           ruff format crawler/ --check
 
-      - name: Test with pytest
+      - name: Test with pytest and generate coverage report
         run: |
-          pytest crawler/
+          pytest --cov=./crawler --cov-report=xml crawler/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
 
   release:
     needs: build
