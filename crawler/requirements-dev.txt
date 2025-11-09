@@ -1,5 +1,5 @@
-pytest
-pytest-mock
-pytest-cov
-ruff
-coverage-badge
+pytest==8.4.2
+pytest-mock==3.15.1
+pytest-cov==7.0.0
+ruff==0.14.4
+coverage-badge==1.1.2

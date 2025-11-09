@@ -17,7 +17,7 @@ Welcome to your personal reverse engineering lab! This environment is designed t
 2.  **Run the Container:**
     To start the container and get a shell inside it, run:
     ```bash
-    docker compose run --rm crackme-dev
+    docker compose run --rm crackmes-dev
     ```
     You will be dropped into a `bash` shell as the `user` inside the container. The `--rm` flag is good practice as it will automatically remove the container when you exit.
 
@@ -77,7 +77,7 @@ You can run `ruff` from your terminal to check for issues or to format your code
 ruff check crawler/
 
 # Fix linting errors automatically (where possible)
-rwuff check crawler/ --fix
+ruff check crawler/ --fix
 
 # Check if formatting is correct
 ruff format crawler/ --check
@@ -94,7 +94,7 @@ If you use Visual Studio Code, you can get real-time feedback and auto-formattin
     Search for and install the `charliermarsh.ruff` extension from the VS Code Marketplace.
 
 2.  **Enable VS Code Settings:**
-    This project includes a pre-configured `.vscode/settings.json` file to enable auto-fixing and auto-formatting on save with `ruff`. When you open this project in VS Code, it should automatically use these settings.
+    This project includes a pre-configured `.vscode/settings.json` file to enable auto-fixing and auto-formatting on save with `ruff`. The `source.fixAll` setting is set to `"explicit"` which is the recommended setting. When you open this project in VS Code, it should automatically use these settings.
 
 ## Documentation & Resources
 
@@ -309,3 +309,17 @@ How you run the binary depends on its type:
     wine gdb my_windows_binary.exe
     ```
 For more advanced Windows debugging, reverse engineers often use dedicated Windows virtual machines with tools like x64dbg or IDA Pro, but Wine is excellent for initial analysis and many common tasks.
+
+## Dependency Management
+
+This project uses [Renovate](https://github.com/renovatebot/renovate) to automate dependency updates.
+
+### How it Works
+
+*   **Weekly Checks:** Renovate will run every weekend to check for new versions of all dependencies (Python packages and GitHub Actions).
+*   **Pull Requests:** If updates are found, Renovate will automatically create a pull request for each update.
+*   **Auto-merging:** If the update is a `patch` or `minor` version change, and the CI pipeline passes, Renovate will automatically merge the pull request. Major version updates will require manual review and merging.
+
+### What You Need to Do
+
+To enable Renovate, you need to install the [Renovate GitHub App](https://github.com/apps/renovate) and grant it access to this repository. Once installed, it will automatically pick up the `renovate.json` configuration file in this project and start working.
