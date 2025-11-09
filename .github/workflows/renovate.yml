@@ -20,4 +20,3 @@ jobs:
         uses: renovatebot/github-action@v44.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          extra_flags: "--autodiscover"
