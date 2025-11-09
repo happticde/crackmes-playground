@@ -322,4 +322,4 @@ This project uses [Renovate](https://github.com/renovatebot/renovate) to automat
 
 ### What You Need to Do
 
-To enable Renovate, you need to install the [Renovate GitHub App](https://github.com/apps/renovate) and grant it access to this repository. Once installed, it will automatically pick up the `renovate.json` configuration file in this project and start working.
+Renovate is now automated via a GitHub Action (`.github/workflows/renovate.yml`). No manual setup or GitHub App installation is required. It will automatically run on a schedule and create pull requests for dependency updates.
