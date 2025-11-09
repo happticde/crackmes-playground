@@ -49,7 +49,51 @@ This environment now includes a convenient `get-crackme` command to automaticall
     ```
 
 2.  **Start Analyzing:**
-    Once downloaded, navigate into the newly created crackme directory and start analyzing using the tools in this environment. Remember to identify the binary type (Linux ELF or Windows PE) using the `file` command as described in the "Working with Multiple Architectures" section.
+    ## Local Development Setup
+
+This project uses `ruff` for linting and formatting. Here's how to set up your local environment to match the CI pipeline.
+
+### 1. Install Dependencies
+
+It's recommended to use a Python virtual environment.
+
+```bash
+# Create and activate a virtual environment (optional but recommended)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install all necessary dependencies
+pip install -r crawler/requirements.txt
+pip install -r crawler/requirements-dev.txt
+```
+
+### 2. Running Ruff Manually
+
+You can run `ruff` from your terminal to check for issues or to format your code.
+
+```bash
+# Check for linting errors
+ruff check crawler/
+
+# Fix linting errors automatically (where possible)
+rwuff check crawler/ --fix
+
+# Check if formatting is correct
+ruff format crawler/ --check
+
+# Format the code
+ruff format crawler/
+```
+
+### 3. VS Code Integration (Recommended)
+
+If you use Visual Studio Code, you can get real-time feedback and auto-formatting.
+
+1.  **Install the Ruff Extension:**
+    Search for and install the `charliermarsh.ruff` extension from the VS Code Marketplace.
+
+2.  **Enable VS Code Settings:**
+    This project includes a pre-configured `.vscode/settings.json` file to enable auto-fixing and auto-formatting on save with `ruff`. When you open this project in VS Code, it should automatically use these settings.
 
 ## Documentation & Resources
 
