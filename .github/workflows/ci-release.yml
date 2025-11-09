@@ -46,7 +46,7 @@ jobs:
       - name: Generate coverage badge
         if: matrix.python-version == '3.13'
         run: |
-          coverage-badge -o coverage.svg
+          coverage-badge -f -o coverage.svg
 
       - name: Commit coverage badge
         if: matrix.python-version == '3.13' && github.ref == 'refs/heads/main' && github.event_name == 'push'
