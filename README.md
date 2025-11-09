@@ -57,15 +57,90 @@ Here are some resources to help you on your journey.
 *   **Intel x86 Assembly Reference:** [https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html) (This is the official, very dense, but complete reference).
 *   **A more friendly guide:** [https://www.cs.virginia.edu/~evans/cs216/guides/x86.html](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 
-### GDB
+### GDB (GNU Debugger)
 
+GDB is an essential tool for dynamic analysis, allowing you to pause program execution, inspect memory and registers, and trace the flow of code.
+
+#### Documentation & Resources
+
+*   **Official GDB Manual:** [https://www.gnu.org/software/gdb/documentation/](https://www.gnu.org/software/gdb/documentation/)
 *   **GDB Cheat Sheet:** [https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)
-*   **Full GDB Documentation:** [https://www.gnu.org/software/gdb/documentation/](https://www.gnu.org/software/gdb/documentation/)
+*   **In-depth Tutorial:** [https://cs.cmu.edu/~gilbert/gdb/tutorial.html](https://cs.cmu.edu/~gilbert/gdb/tutorial.html)
+
+#### Getting Started with GDB
+
+1.  **Compile with Debug Symbols:** Before debugging, compile your program with the `-g` flag to include debugging information.
+    ```bash
+    gcc -g my_program.c -o my_program
+    ```
+2.  **Start a GDB Session:**
+    ```bash
+    gdb ./my_program
+    ```
+3.  **Set a Breakpoint:** Set a breakpoint to tell GDB where to pause execution. A good starting point is the `main` function.
+    ```gdb
+    break main
+    ```
+4.  **Run the Program:**
+    ```gdb
+    run
+    ```
+    Execution will stop at your breakpoint.
+5.  **Step Through Code:** Use `next` to execute the next line (stepping over functions) or `step` (to step into functions).
+6.  **Inspect Data:** Use `print <variable>` to check variable values and `info locals` to see all local variables.
+
+#### Most Common Commands
+
+| Command | Alias | Description |
+| :--- | :--- | :--- |
+| `run` | `r` | Start program execution. |
+| `break <loc>` | `b` | Set a breakpoint at `<loc>` (e.g., `main`, `file.c:10`). |
+| `continue` | `c` | Continue execution until the next breakpoint. |
+| `next` | `n` | Execute the next line of code (steps **over** function calls). |
+| `step` | `s` | Execute the next line of code (steps **into** function calls). |
+| `print <var>` | `p` | Print the value of a variable or expression. |
+| `backtrace` | `bt` | Show the current function call stack. |
+| `list` | `l` | Display the source code around the current line. |
+| `info break` | | Show all breakpoints. |
+| `info locals` | | Display local variables in the current function. |
+| `delete <n>` | `d` | Delete breakpoint number `<n>`. |
+| `quit` | `q` | Exit GDB. |
+
+#### Best Practices
+
+*   **Use a `.gdbinit` file:** Create a `.gdbinit` file in your project or home directory to store custom commands and settings that you use frequently.
+*   **Conditional Breakpoints:** Stop only when a specific condition is met (e.g., `break 15 if i == 10`). This is invaluable for debugging loops.
+*   **Watchpoints:** Use `watch <variable>` to stop execution whenever the value of `<variable>` changes.
+*   **Layouts:** Use `layout src` or `layout asm` to see the source code or disassembly alongside the command prompt. Press `Ctrl+X`, `A` to toggle.
 
 ### Radare2
 
-*   **The Radare2 Book:** [https://book.radare.org/](https://book.radare.org/)
+The official GitHub link is [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
+
+#### Documentation & Resources
+
+*   **Official radare2 Book:** [https://rada.re/n/book.html](https://rada.re/n/book.html)
+*   **Community-driven Book:** [https://radare.gitbooks.io/radare2book/content/](https://radare.gitbooks.io/radare2book/content/)
 *   **Radare2 Cheatsheet:** [https://github.com/radareorg/radare2/blob/master/doc/cheatsheet.md](https://github.com/radareorg/radare2/blob/master/doc/cheatsheet.md)
+
+#### Getting Started with radare2
+
+1.  **Installation:** The most reliable way to install radare2 is by following the official instructions on their GitHub page.
+2.  **Initial Analysis:** Begin by opening your target binary with `radare2 <binary>` and running the `aaa` command to perform a full analysis. This will identify functions, strings, and symbols.
+3.  **Basic Exploration:**
+    *   `afl`: List all identified functions.
+    *   `pdf`: Print the disassembly of the current function.
+    *   `s <address>`: Seek to a specific address or symbol.
+4.  **Visual Mode:** Use `VV` to enter the powerful graph-based visual mode for exploring the control flow of the program.
+5.  **Practice:** The best way to learn is by doing. Experiment with the commands and try solving some simple crackmes.
+
+#### Best Practices
+
+*   **Define a Goal:** Know what you're looking for before you start.
+*   **Save Your Work:** Use projects (`P` command) to save and resume your analysis sessions.
+*   **Use the Debugger:** Start radare2 with the `-d` flag to use its built-in debugger.
+*   **Annotate:** Use comments (`;`) and flags (`f`) to document your findings within your analysis.
+*   **Scripting:** For repetitive tasks, leverage `r2pipe` to script your workflow in languages like Python.
 
 ### Objdump
 
