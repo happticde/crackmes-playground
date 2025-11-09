@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/<OWNER>/<REPO>/actions/workflows/ci-release.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci-release.yml)
-[![Latest Release](https://img.shields.io/github/v/release/<OWNER>/<REPO>)](https://github.com/<OWNER>/<REPO>/releases)
+[![Build Status](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml/badge.svg)](https://github.com/happticde/crackmes-playground/actions/workflows/ci-release.yml)
+[![Latest Release](https://img.shields.io/github/v/release/happticde/crackmes-playground)](https://github.com/happticde/crackmes-playground/releases)
 
 # Crackmes Development Environment
 
