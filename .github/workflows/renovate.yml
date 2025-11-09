@@ -1,0 +1,22 @@
+# .github/workflows/renovate.yml
+name: Renovate
+
+on:
+  schedule:
+    # Every Monday at 3am
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
