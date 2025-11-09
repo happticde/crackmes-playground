@@ -1,3 +1,6 @@
+[![Build Status](https://github.com/<OWNER>/<REPO>/actions/workflows/ci-release.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci-release.yml)
+[![Latest Release](https://img.shields.io/github/v/release/<OWNER>/<REPO>)](https://github.com/<OWNER>/<REPO>/releases)
+
 # Crackmes Development Environment
 
 Welcome to your personal reverse engineering lab! This environment is designed to give you a secure, isolated space to practice your skills on "crackmes" without any risk to your host machine.
