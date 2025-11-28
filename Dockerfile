@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     hexedit \
     wget \
     curl \
+    vim \
     man-db \
     unzip \
     file \
@@ -54,6 +55,12 @@ RUN pip install uv && \
 
 # 8. Create user and home directory
 RUN useradd -ms /bin/bash -d /home/user user
+
+# 8.1. Set up Vim
+COPY .vimrc /home/user/.vimrc
+COPY .vim /home/user/.vim
+RUN chown -R user:user /home/user/.vim /home/user/.vimrc
+
 
 # 9. Copy crawler source and set up command
 COPY crawler /home/user/crawler
