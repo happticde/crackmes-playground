@@ -3,6 +3,9 @@
   "extends": [
     "config:base"
   ],
+  "repositories": [
+    "happticde/crackmes-playground"
+  ],
   "schedule": [
     "every weekend"
   ],
